@@ -1,0 +1,22 @@
+# Example of ClusterIP Service
+# This service type is used for Pod-to-Pod communication (internal communication only)
+
+# ClusterIP Service
+# - Exposes the application internally within the Kubernetes cluster
+# - Not accessible from outside the cluster
+# - Enables communication between Pods using a stable IP and DNS
+
+# Use Case:
+# Frontend Pod communicates with Backend Pod via ClusterIP Service
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: clusteripsvc
+spec:
+  type: ClusterIP  # Exposes service internally within the cluster
+  selector:
+    app: webserver
+  ports:
+    - port: 80        # Service port
+      targetPort: 80  # Nginx container port
