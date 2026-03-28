@@ -1,0 +1,16 @@
+## NodePort Service : This project uses a NodePort Service in Kubernetes to expose the application externally.
+## http://<NodeIP>:30019 NodeIP: public ip of node
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodeport-svc
+spec:
+  type: NodePort
+  selector:
+    app: webserver
+  ports:
+    - port: 80        # Service port
+      targetPort: 80  # Container port
+      nodePort: 30019 # External port (range: 30000–32767)
+ 
