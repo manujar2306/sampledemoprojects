@@ -1,0 +1,13 @@
+## LoadBalancer Service is used to expose applications externally using a cloud provider’s load balancer. It automatically assigns an external IP to access the application.
+
+apiVersion: v1
+kind: Service
+metadata: 
+  name: loadbalancer-svc
+spec:
+  type: LoadBalancer
+  selector:
+    app: webserver
+  ports:
+    - port: 80
+      targetPort: 80
